@@ -1,0 +1,19 @@
+{
+  "client":{
+    "id":"int",
+    "name":"str",
+    "brokerID":"str",
+    "yearIncomePercent":"double"
+  },
+  "broker": {
+    "id":"int",
+    "name":"str",
+    "clients":"Client[]",
+    "rating":"double"
+  },
+  "rate": {
+    "brokerID":"int",
+    "rate":"int",
+    "text":"str"
+  }
+}
