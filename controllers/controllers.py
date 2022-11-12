@@ -61,6 +61,12 @@ class BrokerController:
 
         return db_broker
 
+    def change_rate(self, broker_id: int):
+        db_broker = self.find(broker_id)
+        db_broker.rating = sum([rate.rate for rate in db_broker.rates]) / len(db_broker.rates)
+        self.db.commit()
+        self.db.refresh(db_broker)
+
 
 class RateController:
     def __init__(self, db: Session = Depends(get_db)):
