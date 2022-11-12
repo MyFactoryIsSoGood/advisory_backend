@@ -53,7 +53,8 @@ class BrokerController:
 
     def create(self, broker: BrokerBase) -> Broker:
         db_broker = Broker(
-            name=broker.name
+            name=broker.name,
+            level_risk=broker.level_risk
         )
         self.db.add(db_broker)
         self.db.commit()
@@ -64,6 +65,12 @@ class BrokerController:
     def change_rate(self, broker_id: int):
         db_broker = self.find(broker_id)
         db_broker.rating = sum([rate.rate for rate in db_broker.rates]) / len(db_broker.rates)
+        self.db.commit()
+        self.db.refresh(db_broker)
+
+    def change_level_risk(self, broker_id: int, level_risk: int):
+        db_broker = self.find(broker_id)
+        db_broker.level_risk = level_risk
         self.db.commit()
         self.db.refresh(db_broker)
 

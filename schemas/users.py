@@ -18,6 +18,7 @@ class Client(ClientBase):
 
 class BrokerBase(BaseModel):
     name: str
+    level_risk: Optional[int] = None
 
 
 class Broker(BrokerBase):

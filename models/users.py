@@ -23,6 +23,7 @@ class Broker(Model):
     rating = Column(Float)
     clients = relationship("Client", back_populates="broker")
     rates = relationship("Rate", back_populates="broker")
+    level_risk = Column(Integer)
 
 
 class Rate(Model):
