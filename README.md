@@ -34,9 +34,9 @@
 </div>
 
 ## Другие части:
-* Веб-клиент: ```https://github.com/LaMileyn/Hackathon```
-* iOS-приложение: ```https://github.com/DanonAno/HackAndChangeOtkritie2022```
-* Figma: ```https://www.figma.com/file/7rgqNqAyZpgDvuCbOtO3nu/advisory```
+* <a href=https://github.com/LaMileyn/Hackathon>Веб-клиент</a>
+* <a href=https://github.com/DanonAno/HackAndChangeOtkritie2022>iOS-приложение</a>
+* <a href=https://www.figma.com/file/7rgqNqAyZpgDvuCbOtO3nu/advisory>Figma</a>
 
 
 ## О проекте
