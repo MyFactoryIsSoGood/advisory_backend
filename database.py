@@ -4,6 +4,8 @@ from sqlalchemy.orm import sessionmaker
 from dependencies import get_db_settings
 
 settings = get_db_settings()
+print(settings.host, settings.port, settings.username, settings.password, settings.database)
+print("zhopa")
 SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.username}:{settings.password}@{settings.host}:{settings.port}/{settings.database}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
