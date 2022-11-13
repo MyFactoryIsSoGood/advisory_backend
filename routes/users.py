@@ -1,4 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+import collections
+
+from fastapi import APIRouter, Depends, HTTPException, status, Request, Response
+from starlette.status import HTTP_201_CREATED
 from pydantic import parse_obj_as
 from typing import List
 
@@ -31,6 +34,35 @@ def get_clients(client_id: int, clients: ClientController = Depends()):
         )
 
     return Client.from_orm(db_client)
+
+
+@router.post("/{client_id}/answer")
+async def answer_client(req: Request, client_id: int, clients: ClientController = Depends()):
+    types = {
+        1: "Консеравтивный",
+        2: "Сбалансированный",
+        3: "Агрессивный"
+    }
+    body = await req.json()
+    counts = collections.Counter([int(answer) for answer in body['answers']])
+    if counts[4] > 4:
+        inv_type = 3
+    elif counts[3] > 4:
+        inv_type = 2
+    elif counts[2] > 4:
+        inv_type = 1
+    else:
+        inv_type = 1
+
+    db_client = clients.insert_type(client_id, inv_type)
+    if db_client is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Client not found"
+        )
+
+    return {'invest_type': types[inv_type]}
+
 
 @router.post("/{client_id}/link/{broker_id}", response_model=Client)
 def link_client_to_broker(client_id: int, broker_id: int, clients: ClientController = Depends()):

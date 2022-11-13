@@ -38,6 +38,14 @@ class ClientController:
 
         return db_client
 
+    def insert_type(self, client_id: int, inv_type: int) -> Client:
+        db_client = self.find(client_id)
+        db_client.invest_type = inv_type
+        self.db.commit()
+        self.db.refresh(db_client)
+
+        return db_client
+
 
 class BrokerController:
     def __init__(self, db: Session = Depends(get_db)):

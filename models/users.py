@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Column, String, Float, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -9,6 +11,7 @@ class Client(Model):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
+    invest_type = Column(Integer)
     broker_id = Column(Integer, ForeignKey("brokers.id"), nullable=True)
     yearIncomePercent = Column(Float)
     broker = relationship("Broker", back_populates="clients")
