@@ -36,6 +36,7 @@
 ## Другие части:
 * Веб-клиент: ```https://github.com/LaMileyn/Hackathon```
 * iOS-приложение: ```https://github.com/LaMileyn/Hackathon```
+* Figma: ```https://www.figma.com/file/7rgqNqAyZpgDvuCbOtO3nu/advisory```
 
 
 ## О проекте
